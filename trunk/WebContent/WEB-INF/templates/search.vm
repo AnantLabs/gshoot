@@ -1,0 +1,26 @@
+<script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="js/gshoot.js"></script>
+
+<div id="gbody">
+<center>
+    <br id="lgpd" clear="all">
+        <img alt="GShoot" src="images/logo02.gif" height="110" width="276"><br><br>
+        <form action="search.do" method="get" name="f" onsubmit="return checkInput();">
+            <table cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr valign="top">
+                        <td width="25%">&nbsp;</td>
+                        <td align="center" nowrap="nowrap">
+                            <input maxlength="2048" name="q" id="q" size="55" title="企业搜索" value=""><br>
+                            <input name="btnG" value="搜索" onclick="this.checked=1" type="submit">
+                        </td>
+                        <td width="25%">&nbsp;</td>                        
+                    </tr>
+                </tbody>
+            </table>
+            <table style="visibility: hidden; left: 517px; top: 202px; width: 391px;" class="gac_m" cellpadding="0" cellspacing="0">
+            </table>
+        </form>
+    <br/>
+</center>
+</div>

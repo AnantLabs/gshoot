@@ -1,0 +1,142 @@
+<project name="WFI" basedir=".">
+    <property file="build.properties"/>
+
+    <property name="test.lib.dir" value="${basedir}/test/lib"/>
+    <property name="web.lib.dir" value="${basedir}/WebContent/WEB-INF/lib"/>
+
+    <property name="src.dir" value="${basedir}/src"/>
+    <property name="web.src.dir" value="${basedir}/WebContent"/>
+    <property name="test.dir" value="${basedir}/test"/>
+
+    <property name="build.dir" value="${basedir}/build"/>
+    <property name="src.classes.dir" value="${build.dir}/production"/>
+    <property name="test.classes.dir" value="${build.dir}/test"/>
+    <property name="war.dir" value="${build.dir}/war"/>
+
+    <property name="reports.dir" value="${build.dir}/reports"/>
+    <property name="test.reports.dir" value="${reports.dir}/junit"/>
+
+    <property name="deploy.dir" value="${appserver.home}/webapps"/>
+
+    <path id="lib.path">
+        <fileset dir="${web.lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${test.lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="-init">
+        <mkdir dir="${src.classes.dir}"/>
+        <mkdir dir="${test.classes.dir}"/>
+        <mkdir dir="${test.reports.dir}"/>
+        <mkdir dir="${war.dir}"/>
+    </target>
+
+    <target name="-clean">
+        <delete dir="${build.dir}" failonerror="false"/>
+    </target>
+
+    <target name="-compile.src">
+        <javac encoding="utf-8" classpathref="lib.path" memorymaximumsize="128m" fork="true"
+               srcdir="${src.dir}"
+               destdir="${src.classes.dir}" debug="true" source="1.5" target="1.5">
+        </javac>
+        <copy todir="${src.classes.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.xml"/>
+                <include name="**/*.properties"/>
+                <include name="**/*.xls"/>
+                <include name="**/*.hbm"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="-compile.test">
+        <javac encoding="utf-8" classpathref="lib.path" memorymaximumsize="128m" fork="true"
+               destdir="${test.classes.dir}" debug="true">
+            <src path="${test.dir}/func"/>
+            <src path="${test.dir}/unit"/>
+            <classpath path="${src.classes.dir}"/>
+        </javac>
+    </target>
+    <target name="-build.war">
+        <copy todir="${war.dir}">
+            <fileset dir="${basedir}/WebContent">
+                <exclude name="**/.svn"/>
+            </fileset>
+        </copy>
+        <jar destfile="${war.dir}/WEB-INF/lib/gshoot.jar" basedir="${src.classes.dir}"></jar>
+    </target>
+    <target name="-package">
+        <war destfile="${build.dir}/gshoot.war">
+            <fileset dir="${war.dir}"/>
+        </war>
+    </target>
+    <target name="-deploy">
+        <copy todir="${deploy.dir}">
+            <fileset dir="${build.dir}">
+                <include name="gshoot.war"></include>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="-deploy.quick">
+        <copy todir="${deploy.dir}/gshoot">
+            <fileset dir="${web.src.dir}">
+                <include name="**/*.vm"/>
+                <include name="**/*.js"/>
+                <include name="**/*.gif"/>
+                <include name="**/*.png"/>
+                <include name="**/*.css"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="-run.unit.test">
+        <junit printsummary="yes" failureproperty="tests.failed">
+            <classpath>
+                <pathelement location="${src.classes.dir}"/>
+                <pathelement location="${test.classes.dir}"/>
+                <fileset dir="${web.lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <fileset dir="${test.lib.dir}">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+
+            <formatter type="xml"/>
+
+            <batchtest fork="yes" todir="${test.reports.dir}">
+                <fileset dir="${test.dir}/unit">
+                    <include name="**/*Test.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+
+        <junitreport todir="${test.reports.dir}">
+            <fileset dir="${test.reports.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${test.reports.dir}/html"/>
+        </junitreport>
+
+        <fail if="tests.failed">FAIL:
+            ---------------------------------------------------------
+            One or more tests failed, check the report for detail.
+            ---------------------------------------------------------
+        </fail>
+    </target>
+
+    <target name="--clean.and.compile.src" depends="-clean, -init, -compile.src"/>
+    <target name="--clean.and.compile.test" depends="-clean, -init, -compile.src, -compile.test"/>
+    <target name="--package" depends="-clean, -init, -compile.src, -build.war, -package"/>
+
+    <target name="clean" depends="-clean" description="clean all"/>
+    <target name="ut" depends="--clean.and.compile.test, -run.unit.test" description="run all unit tests"/>
+    <target name="package" depends="--package" description="create war package"/>
+    <target name="deploy" depends="--package, -deploy" description="deploy war package to webserver"/>
+    <target name="dq" depends="-deploy.quick" description="deploy js/css/images/vm to webserver"/>
+</project>

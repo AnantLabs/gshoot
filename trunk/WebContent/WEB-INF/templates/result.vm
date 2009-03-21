@@ -1,0 +1,75 @@
+<script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="js/gshoot.js"></script>
+<div id="header">
+    <div id="sform" style="visibility:visible;">
+        <form id="tsf" action="search.do" method="get" name="gs">
+            <table id="sft" class="ts" style="clear: both;">
+                <tbody>
+                    <tr valign="top">
+                        <td style="padding-right:8px;">
+                            <h1>
+                                <a id="logo01" title="回到搜索主页" href="search.do">
+                                    <img src="images/logo01.gif">
+                                </a>
+                            </h1>
+                        </td>
+                        <td id="sff" style="padding:1dpx 0pt 7px; width:100%;">
+                            <table class="ts" style="margin-top:40px;">
+                                <tbody>
+                                    <tr>
+                                        <td nowrap="nowrap">
+                                            <input type="text" value="" title="企业搜索" size="41" name="q" id="q"
+                                                   maxlength="2048"/>
+                                            <input type="submit" value="搜索"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div id="results">
+    <div id="srh">
+        <div id="srht"><strong>搜索结果</strong></div>
+        <p>约有 <strong>$!rs.pager.numTotalHits</strong> 项符合 <strong>$!q</strong>
+            的查询结果，以下是第<strong>$!rs.pager.startRecord</strong>-<strong>$!rs.pager.endRecord</strong> 项 （搜索用时
+            <strong>$!t</strong> 秒）</p>
+    </div>
+    <div id="srs">
+        #if($!rs.pager.numTotalHits > 0)
+        <ol id="rso">
+            #foreach ($f in $rs.results)
+            <li class="g w0">
+                <h3 class="r">
+                    <a href="download.do?doc=$f.encodedPath" target="_blank" class="l">
+                        <em>$!f.name</em>
+                    </a>
+                </h3><cite></cite>
+
+                <div class="s">
+                    $!f.digest
+                    <br>
+                </div>
+                <div>
+                    <cite>相关度 - $!f.score - </cite><br>
+                    <cite>文件大小 - $!f.formatedFileSize - </cite><br>
+                    <cite>更新时间 - $!f.formatedLastModified - </cite>
+                </div>
+                <div class="wce"></div>
+            </li>
+            #end
+        </ol>
+
+        #else
+        <p>对不起，没有找到符合条件的记录，请重新搜索。</p>
+        #end
+
+        <div id="resultPages">
+        </div>
+    </div>
+</div>

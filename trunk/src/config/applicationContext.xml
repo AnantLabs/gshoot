@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+			http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+    <!--<context:annotation-config/>-->
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:gshoot.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="searchService" class="com.vinci.gshoot.search.SearchService">
+        <constructor-arg value="${index.dir}"/>
+        <constructor-arg value="${hits.per.page}"/>
+    </bean>
+    <bean id="indexService" class="com.vinci.gshoot.index.IndexService">
+        <constructor-arg index="0" value="${index.dir}"/>
+    </bean>
+    <bean id="fileService" class="com.vinci.gshoot.file.FileService">
+        <constructor-arg index="0" value="${file.dir}"/>
+    </bean>
+    <bean id="watchDog" class="com.vinci.gshoot.watchdog.WatchDogObserver">
+        <constructor-arg index="0" ref="indexService"/>
+        <constructor-arg index="1" ref="fileService"/>
+    </bean>
+    <bean id="timeScheduleService" class="com.vinci.gshoot.watchdog.TimeScheduleService">
+        <constructor-arg index="0" value="${watch.interval.seconds}"/>
+        <constructor-arg index="1" ref="watchDog"/>
+    </bean>
+</beans>
