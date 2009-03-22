@@ -1,4 +1,4 @@
-package com.vinci.gshoot.index;
+package com.vinci.gshoot.document;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
@@ -14,11 +14,16 @@ public class ExcelDocument extends AbstractFileDocument {
     private Logger logger = Logger.getLogger(ExcelDocument.class);
 
     void addContentToDocument(Document document, File file) throws Exception {
-        document.add(new Field(FIELD_CONTENT, getContentReader(file)));
-    }
+        String contents = getContent(file);
+        
+        // Add contents as Reader-valued Text field, so as to get tokenized and indexed.
+        addTextField(document, FIELD_CONTENT, new StringReader(contents));
 
-    private Reader getContentReader(File file) throws Exception {
-        return new StringReader(getContent(file));
+        // Add summary as UnIndexed field, it is stored and returned with hit documents for display.
+        addUnindexedField(document, FIELD_SUMMARY, contents.substring(0, Math.min(contents.length(), SUMMARY_LENGTH)));
+
+        addTextField(document, FIELD_TITLE, file.getName());
+
     }
 
     public String getContent(File file) throws Exception {
@@ -73,7 +78,7 @@ public class ExcelDocument extends AbstractFileDocument {
     }
 
     private String extractCell(HSSFCell cell) {
-        String value = null;
+        String value = "";
         switch (cell.getCellType()) {
             case HSSFCell.CELL_TYPE_NUMERIC:
                 value = String.valueOf(cell.getNumericCellValue());

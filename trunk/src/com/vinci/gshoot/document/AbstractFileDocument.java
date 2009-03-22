@@ -1,4 +1,4 @@
-package com.vinci.gshoot.index;
+package com.vinci.gshoot.document;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -13,6 +13,8 @@ import java.util.Date;
 public abstract class AbstractFileDocument implements FileDocument {
 
     private DateTools.Resolution dateTimeResolution = DateTools.Resolution.SECOND;
+    private static final char FILE_SEPARATOR = System.getProperty("file.separator").charAt(0);
+    protected static final int SUMMARY_LENGTH = 200;
 
     public Document toDocument(File file) throws Exception {
         Document document = new Document();
@@ -25,9 +27,18 @@ public abstract class AbstractFileDocument implements FileDocument {
         // to tokenize the field into words.
         addKeywordField(document, FIELD_MODIFIED, timeToString(file.lastModified()));
 
+        // Add the uid as a field, so that index can be incrementally maintained.
+        // This field is not stored with document, it is indexed, but it is not
+        // tokenized prior to indexing.
+        addUnstoredKeywordField(document, FIELD_UID, uid(file));
+
         addContentToDocument(document, file);
 
         return document;
+    }
+
+    private String uid(File file) {
+        return file.getPath().replace(FILE_SEPARATOR, '\u0000') + "\u0000" + timeToString(file.lastModified());
     }
 
     abstract void addContentToDocument(Document document, File file) throws Exception;
@@ -36,21 +47,9 @@ public abstract class AbstractFileDocument implements FileDocument {
         return DateTools.timeToString(time, dateTimeResolution);
     }
 
-    protected void addKeywordField(Document document, String name, String value) {
-        if (value != null) {
-            document.add(new Field(name, value, Field.Store.YES, Field.Index.UN_TOKENIZED));
-        }
-    }
-
     protected void addTextField(Document document, String name, Reader value) {
         if (value != null) {
             document.add(new Field(name, value));
-        }
-    }
-
-    protected void addTextField(Document document, String name, String value) {
-        if (value != null) {
-            document.add(new Field(name, value, Field.Store.YES, Field.Index.TOKENIZED));
         }
     }
 
@@ -60,15 +59,27 @@ public abstract class AbstractFileDocument implements FileDocument {
         }
     }
 
+    protected void addTextField(Document document, String name, String value) {
+        if (value != null) {
+            document.add(new Field(name, value, Field.Store.YES, Field.Index.ANALYZED));
+        }
+    }
+
     protected static void addUnindexedField(Document document, String name, String value) {
         if (value != null) {
-            document.add(new Field(name, value, Field.Store.YES, Field.Index.NO));
+            document.add(new Field(name, value, Field.Store.YES, Field.Index.NOT_ANALYZED));
+        }
+    }
+
+    protected void addKeywordField(Document document, String name, String value) {
+        if (value != null) {
+            document.add(new Field(name, value, Field.Store.YES, Field.Index.NOT_ANALYZED));
         }
     }
 
     protected void addUnstoredKeywordField(Document document, String name, String value) {
         if (value != null) {
-            document.add(new Field(name, value, Field.Store.NO, Field.Index.UN_TOKENIZED));
+            document.add(new Field(name, value, Field.Store.NO, Field.Index.NOT_ANALYZED));
         }
     }
 }

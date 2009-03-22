@@ -48,7 +48,6 @@ public class WatchDogObserver implements Observer {
         indexService.indexAll(currentFiles.keySet());
     }
 
-
     private FileChangeSet diffChange(Map<String, FileInfo> currentFiles, Map<String, FileInfo> newFiles) {
         FileChangeSet changeset = new FileChangeSet();
         for (String newFileName : newFiles.keySet()) {

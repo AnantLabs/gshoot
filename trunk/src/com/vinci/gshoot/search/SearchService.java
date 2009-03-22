@@ -1,19 +1,20 @@
 package com.vinci.gshoot.search;
 
+import com.vinci.gshoot.document.DocumentFactory;
+import com.vinci.gshoot.document.FileDocument;
 import com.vinci.gshoot.file.FileInfo;
-import com.vinci.gshoot.index.FileDocument;
-import com.vinci.gshoot.index.FileDocumentFactory;
-import com.vinci.gshoot.parser.WrongFileException;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.*;
 import org.apache.lucene.search.highlight.*;
-import org.apache.lucene.document.Document;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringReader;
 
 public class SearchService {
     private String indexDir;
@@ -102,7 +103,7 @@ public class SearchService {
         Fragmenter fragmenter = new SimpleFragmenter(200);
         highlighter.setTextFragmenter(fragmenter);
 
-        String content = FileDocumentFactory.getFileDocument(path).getContent(new File(path));
+        String content = DocumentFactory.getFileDocument(path).getContent(new File(path));
         TokenStream tokenStream = getAnalyzer().tokenStream(FileDocument.FIELD_CONTENT,
                 new StringReader(content));
 

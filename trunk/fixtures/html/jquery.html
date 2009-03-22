@@ -1,0 +1,453 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="jQuery">
+<meta name="description" content="jQuery另一个很令人惬意的地方是，一般的代码都是一行一行写，jQuery的代码可以一串一串写。这一点，在前面的文章中已经介绍过了。直接来一个Demo:[复制到剪贴板]CODE:&lt;!DOCTY">
+<link type="text/css" rel="stylesheet" href="jquery4_files/SyntaxHighlighter.html">
+<title>jQuery 入门使用教程之四：链式代码 - jQuery  - 拼吾爱程序人生</title>
+<link rel="icon" href="http://www.pin5i.com/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://www.pin5i.com/favicon.ico" type="image/x-icon">
+<!-- 调用样式表 -->
+<link rel="stylesheet" href="jquery4_files/dnt.css" type="text/css" media="all">
+
+<script type="text/javascript" src="jquery4_files/report.js"></script>
+<script type="text/javascript" src="jquery4_files/common.js"></script>
+<script type="text/javascript" src="jquery4_files/common_002.js"></script>
+<script type="text/javascript" src="jquery4_files/menu.js"></script>
+
+<script type="text/javascript">var Allowhtml=1;
+var Allowsmilies=1;
+var Allowbbcode=0;
+var Allowimgcode=1;
+</script>
+<script language="javascript" src="jquery4_files/shCore.html"></script>
+<script language="javascript" src="jquery4_files/shBrushCpp.html"></script>
+<script language="javascript" src="jquery4_files/shBrushDelphi.html"></script>
+<script language="javascript" src="jquery4_files/shBrushJava.html"></script>
+<script language="javascript" src="jquery4_files/shBrushPhp.html"></script>
+<script language="javascript" src="jquery4_files/shBrushPython.html"></script>
+<script language="javascript" src="jquery4_files/shBrushRuby.html"></script>
+<script language="javascript" src="jquery4_files/shBrushCSharp.html"></script>
+<script language="javascript" src="jquery4_files/shBrushXml.html"></script>
+<script language="javascript" src="jquery4_files/shBrushSql.html"></script>
+<script language="javascript" src="jquery4_files/shBrushCss.html"></script>
+<script language="javascript" src="jquery4_files/shBrushJScript.html"></script>
+<script language="javascript" src="jquery4_files/shBrushVb.html"></script>
+<link href="jquery4_files/css.css" type="text/css" rel="stylesheet"><script charset="utf-8" type="text/javascript" src="jquery4_files/style014.js" id="style014"></script><script charset="utf-8" type="text/javascript" src="jquery4_files/style016.js" id="style016"></script><style></style><style></style></head><body><div id="clickeye" style="position: absolute; display: none; z-index: 100000;"></div><div style=""></div>
+<div id="append_parent"><script id="vijleXUwCPhiladBnBiCvvgwAHmCZsRZ" type="text/javascript"><!--
+google_ad_client = "pub-4542144052749647";
+/* 728x15, 创建于 07-12-5 */
+google_ad_slot = "4051728191";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script><script id="kWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" type="text/javascript">
+</script><script id="tkUjFbxPpOjnppmkNpxIxyryQPQrsztF" type="text/javascript"><!--
+google_ad_client = "pub-4542144052749647";
+/* 336x280, 创建于 07-11-6 */
+google_ad_slot = "2003298321";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script></div>
+<div id="container">
+<!--header start-->
+<div id="header">
+	<h2><a href="http://www.pin5i.com/forumindex.aspx" title="拼吾爱程序人生"><img src="jquery4_files/logo.gif" alt="拼吾爱程序人生"></a></h2>
+	<p id="topmenu">
+			<a href="http://www.pin5i.com/login.aspx" class="reg">登录</a>
+			<a href="http://www.pin5i.com/register.aspx" class="reg">注册</a>
+		<a href="http://www.pin5i.com/help.aspx" target="_blank">帮助</a>	
+	</p>
+		<div id="ad"><script type="text/javascript"><!--
+google_ad_client = "pub-4542144052749647";
+/* 468x60, 创建于 08-8-8 */
+google_ad_slot = "3111632074";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript" src="jquery4_files/show_ads.js">
+</script><iframe name="google_ads_frame" src="jquery4_files/ads.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="60" scrolling="no" width="468"></iframe></div>
+</div>
+<div id="wraper">
+	<div id="menubar">
+		<div class="selectmode">
+		<script type="text/javascript">
+			if(top == self) {
+				document.write('<a href="frame.aspx?f=1" target="_top">分栏模式<\/a>');
+			}
+		</script><a href="http://www.pin5i.com/frame.aspx?f=1" target="_top">分栏模式</a>
+		</div>
+		<ul id="navigation">
+			<li><a href="http://www.pin5i.com/showtemplate.aspx">界面</a></li>
+			<li><a href="http://www.pin5i.com/archiver/index.aspx">简洁版本</a></li>
+		</ul>
+	</div>
+<script type="text/javascript">
+var templatepath = "default";
+var postminchars = parseInt(5);
+var postmaxchars = parseInt(10000);
+var disablepostctrl = parseInt(0);
+var forumpath = "/";
+</script>
+<script type="text/javascript" src="jquery4_files/showtopic.js"></script>
+<script type="text/javascript" src="jquery4_files/menu.js"></script>
+<script type="text/javascript" src="jquery4_files/ajax.js"></script>
+<!--NtForumLocation start-->
+
+<div id="foruminfo">
+	<div class="userinfo">
+		<h2><a id="NavHome" href="http://www.pin5i.com/forumindex.aspx" onmouseover="showMenu(this.id);" onmouseout="showMenu(this.id);">拼吾爱程序人生</a><span><a href="http://www.pin5i.com/showforum-200.html">其他编程</a><a href="http://www.pin5i.com/showforum-186.html">javascript</a><a href="http://www.pin5i.com/showforum-215.html">jQuery</a></span>
+			<strong>jQuery 入门使用教程之四：链式代码</strong>
+		</h2>
+	</div>
+	<div class="forumstats">
+		<div id="search">
+<!-- SiteSearch Google -->
+<form method="get" action="http://www.google.cn/custom" target="google_window">
+<table bgcolor="#ffffff" border="0">
+<tbody><tr>
+<td style="display: none;"><input name="sitesearch" value="" id="ss0" type="radio"><label for="ss0" title="搜索网络"><font color="#000000" size="-1">Web</font></label></td>
+<td style="display: none;"><input name="sitesearch" value="www.pin5i.com" checked="checked" id="ss1" type="radio"><label for="ss1" title="搜索 www.pin5i.com"><font color="#000000" size="-1">www.pin5i.com</font></label></td>
+<td>&nbsp;</td><td nowrap="nowrap">
+<input name="domains" value="www.pin5i.com" type="hidden">
+<label for="sbi" style="display: none;">输入您的搜索字词</label>
+<input name="q" size="18" maxlength="255" value="" id="sbi" type="text">
+<label for="sbb" style="display: none;">提交搜索表单</label>
+<input name="sa" value="Google" id="sbb" class="sbutton_search" style="height: 23px; width: 55px;" type="submit">
+</td>
+<td>&nbsp;</td>
+<td nowrap="nowrap">
+<input name="client" value="pub-4542144052749647" type="hidden">
+<input name="forid" value="1" type="hidden">
+<input name="ie" value="utf-8" type="hidden">
+<input name="oe" value="GB2312" type="hidden">
+<input name="safe" value="active" type="hidden">
+<input name="cof" value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:FFFFFF;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;LH:50;LW:189;L:http://www.pin5i.com/templates/default/images/logo.gif;S:http://www.pin5i.com;FORID:1" type="hidden">
+<input name="hl" value="zh-CN" type="hidden">
+</td></tr></tbody></table>
+</form>
+<!-- SiteSearch Google -->
+		</div>
+	</div>
+</div>
+	<div id="NavHome_menu" class="navhomemenu" style="display: none;"><div id="homewindow"><dl>
+<dt><a href="http://www.pin5i.com/showforum-163.html">.Net编程</a></dt>
+	<dd><a href="http://www.pin5i.com/showforum-178.html">Asp.Net</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-179.html">C#</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-180.html">ADO.Net</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-189.html">Visual Studio.NET</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-203.html">Silverlight</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-204.html">Linq</a></dd>
+
+<dt><a href="http://www.pin5i.com/showforum-200.html">其他编程</a></dt>
+	<dd><a href="http://www.pin5i.com/showforum-7.html">Java</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-190.html">Ajax</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-186.html">javascript</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-188.html">RegExp</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-185.html">XML</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-181.html">Web Service</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-82.html">C &amp; C++</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-168.html">Ruby</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-68.html">Python</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-69.html">Flex</a></dd>
+
+<dt><a href="http://www.pin5i.com/showforum-176.html">数据库编程</a></dt>
+	<dd><a href="http://www.pin5i.com/showforum-196.html">SQL</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-60.html">SQL Server</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-66.html">Oracle</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-209.html">DB2</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-210.html">MySQL</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-211.html">Other DB</a></dd>
+
+<dt><a href="http://www.pin5i.com/showforum-198.html">编程应用</a></dt>
+	<dd><a href="http://www.pin5i.com/showforum-202.html">应用系统</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-195.html">建站技术</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-187.html">网站赢利</a></dd>
+	<dd><a href="http://www.pin5i.com/showforum-199.html">建站软件</a></dd>
+
+<dt><a href="http://www.pin5i.com/showforum-67.html">社区管理</a></dt>
+	<dd><a href="http://www.pin5i.com/showforum-212.html">网站事务</a></dd>
+</dl></div></div>
+<!--NtForumLocation end-->
+<!--adtext-->
+<div id="adtext">
+	<div class="adtextbody">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tbody><tr><td align="center"><script type="text/JavaScript"> 
+alimama_pid="mm_10070595_158932_3038020"; 
+alimama_titlecolor="0000FF"; 
+alimama_descolor ="000000"; 
+alimama_bgcolor="FFFFFF"; 
+alimama_bordercolor="E6E6E6"; 
+alimama_linkcolor="008000"; 
+alimama_bottomcolor="FFFFFF"; 
+alimama_anglesize="0"; 
+alimama_bgpic="0"; 
+alimama_icon="0"; 
+alimama_sizecode="12"; 
+alimama_width=468; 
+alimama_height=60; 
+alimama_type=2; 
+</script> 
+<script src="jquery4_files/inf.js" type="text/javascript"> 
+</script><img src="jquery4_files/alimamal_002.html" name="alimamatmpf0.6839620720103049" id="alimamatmpf0.6839620720103049" style="border: 0px none ; margin: 0px; padding: 0px; width: 0px; height: 0px; vertical-align: baseline;" border="0"><iframe name="alimamaf0.6839620720103049" id="alimamaf0.6839620720103049" border="0" marginwidth="0" marginheight="0" style="width: 468px; height: 60px;" src="jquery4_files/alimama.html" frameborder="0" scrolling="no"></iframe></td><td align="center"><script type="text/JavaScript"> 
+alimama_pid="mm_10070595_158932_1999183"; 
+alimama_titlecolor="0000FF"; 
+alimama_descolor ="000000"; 
+alimama_bgcolor="FFFFFF"; 
+alimama_bordercolor="E6E6E6"; 
+alimama_linkcolor="008000"; 
+alimama_bottomcolor="FFFFFF"; 
+alimama_anglesize="0"; 
+alimama_bgpic="0"; 
+alimama_icon="0"; 
+alimama_sizecode="12"; 
+alimama_width=468; 
+alimama_height=60; 
+alimama_type=2; 
+</script> 
+<script src="jquery4_files/inf.js" type="text/javascript"> 
+</script><img src="jquery4_files/alimamal.html" name="alimamatmpf0.9112749367275543" id="alimamatmpf0.9112749367275543" style="border: 0px none ; margin: 0px; padding: 0px; width: 0px; height: 0px; vertical-align: baseline;" border="0"><iframe name="alimamaf0.9112749367275543" id="alimamaf0.9112749367275543" border="0" marginwidth="0" marginheight="0" style="width: 468px; height: 60px;" src="jquery4_files/alimama_002.html" frameborder="0" scrolling="no"></iframe></td></tr>
+		</tbody></table>
+	</div>
+</div>
+<!--adtext-->
+<div class="forumpages">
+	<div class="forumpagesnumbers">
+		<table border="0" cellpadding="0" cellspacing="0">
+		<tbody><tr>
+			<td class="forumallpages"><strong>1</strong>&nbsp;&nbsp;/&nbsp;&nbsp;1&nbsp;&nbsp;页</td>
+			<td width="10">&nbsp;</td>
+			<td class="forumallpages"><span>1</span></td>
+			<td class="forumallpages3">跳转<input name="gopage" id="gopage" onkeydown="if(event.keyCode==13) { if(1) {window.location='showtopic-19729-' + (parseInt(this.value) > 0 ? parseInt(this.value) : 1) + '.html';}else{window.location='showtopic.aspx?topicid=19729&amp;page=' + (parseInt(this.value) > 0 ? parseInt(this.value) : 1) ;}}" size="4" maxlength="9" class="colorblue2" type="text">页</td>
+			<td class="viewnumber"><strong>查看:</strong>58</td>
+		</tr>					   
+		</tbody></table>
+	</div>
+</div>
+<div class="ntforumbox">
+	<div class="titlebar">
+		<h2>
+			jQuery 入门使用教程之四：链式代码
+		</h2>
+	</div>
+<form id="delpost" name="delpost" method="post" action="topicadmin.aspx?action=moderate&amp;forumid=215">
+	<input name="forumid" value="215" type="hidden">
+	<input name="topicid" value="19729" type="hidden">
+	<input name="operat" value="delposts" type="hidden">
+	<div id="postsContainer">
+	<div class="viewthread">
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tbody>
+		<tr>
+		<td class="postauthor" id="23582">
+		<!--register user-->
+						<div id="memberinfo_1" onmouseover="showMenu(this.id,false)">
+							<div class="normalname" onmouseover="this.className='normalnameon'" onmouseout="this.className='normalname'">
+							<img src="jquery4_files/friend_dot2.gif" alt="离线" title="离线">
+							cobra
+							</div>
+						</div>
+						<div class="avatarphoto">
+								<img src="jquery4_files/2008-05-22_6-9-36.jpg" onerror="this.onerror=null;this.src='templates/default/images/noavatar.gif';" alt="头像">			
+						</div>
+							<div class="nickname">拼吾爱清道夫</div>
+							<p>
+									<script language="javascript" type="text/javascript">
+										ShowStars(9, 2);
+									</script><img src="jquery4_files/star_level3.gif"><img src="jquery4_files/star_level3.gif"><img src="jquery4_files/star_level1.gif">
+							</p>
+						<div class="profile">
+							<ul>
+								<li>性别:<span><script type="text/javascript">document.write(displayGender(0));</script>保密</span></li>
+								<li>来自:<span>拼吾爱</span></li>
+								<li>积分:<span>5690</span></li>
+								<li>帖子:<span>5597</span></li>
+								<li>注册:<span>
+2007-04-09</span></li>					
+							</ul>
+						</div>
+							<div class="medals"><img src="jquery4_files/Medal19.gif" alt="社区创始人" title="社区创始人" class="medals" border="0"></div>
+		</td>
+		<td class="postcontent">
+			<div class="navpostinfo">
+				<div class="postinfoleft">
+					<span>
+2008-08-09 23:49</span>
+					<em>|
+							  <a href="http://www.pin5i.com/showtopic.aspx?topicid=19729&amp;onlyauthor=1">只看楼主</a>  
+					</em>
+				</div>	
+				<div class="postinfoitem">
+					<a href="http://www.pin5i.com/showtree.aspx?topicid=19729&amp;postid=23582">树型</a>|
+					<a href="http://www.pin5i.com/favorites.aspx?topicid=19729">收藏</a>|
+					<a href="###" class="t_number" onclick="$('message23582').className='t_smallfont'">小</a>			
+					<a href="###" class="t_number" onclick="$('message23582').className='t_msgfont'">中</a>
+					<a href="###" class="t_number" onclick="$('message23582').className='t_bigfont'">大</a>
+					<a href="###" class="bold" title="复制帖子链接到剪贴板" onclick="setcopy(window.location.toString().replace(/#(.*?)$/ig, '') + '#23582', '已经复制到剪贴板')"><span>1</span></a>
+				</div>
+			</div>
+			<div class="ad_textlink2" id="ad_thread2_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<script type="text/javascript"><!--
+google_ad_client = "pub-4542144052749647";
+/* 728x15, 创建于 07-12-5 */
+google_ad_slot = "4051728191";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript" src="jquery4_files/show_ads.js">
+</script><iframe name="google_ads_frame" src="jquery4_files/ads_002.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="15" scrolling="no" width="728"></iframe></div>
+			<div class="defaultcontent">
+				  <div class="forumarticle">
+					<h3>jQuery 入门使用教程之四：链式代码</h3>
+					<div id="message23582" class="t_msgfont">
+						<div class="ad_pip" id="ad_thread3_1"><script type="text/javascript"><!--
+google_ad_client = "pub-4542144052749647";
+/* 336x280, 创建于 07-11-6 */
+google_ad_slot = "2003298321";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript" src="jquery4_files/show_ads.js">
+</script><iframe name="google_ads_frame" src="jquery4_files/ads_003.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="280" scrolling="no" width="336"></iframe></div>
+						<div id="clickeye_content">jQuery另一个很令人惬意的地方是，一般的代码都是一行一行写，jQuery的代码可以一串一串写。<br><clk>这一点，在前面的文章中已经<nobr id="clickeyekey1" style="border-bottom: 1px dotted rgb(102, 0, 255); text-decoration: underline; color: rgb(102, 0, 255); background-color: transparent;" onclick="kwC(event,1)" oncontextmenu="return false" onmouseover="kwE(event,1, this)" onmouseout="kwL(event,this)" onmousemove="kwM(1)">介绍</nobr>过了。</clk><br>直接来一个Demo:<br><br><div class="msgheader"><div class="right"><a href="###" class="smalltxt" onclick="copycode($('code23582_-1'));">[复制到剪贴板]</a></div>CODE:</div><div id="code23582_-1" class="msgborder">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;<br><br>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;<br>&lt;head&gt;<br>&nbsp; &nbsp; &lt;title&gt;chainning code&lt;/title&gt;<br>&nbsp; &nbsp; &lt;script src="../scripts/jquery-1.2.3.intellisense.js" type="text/javascript"&gt;&lt;/script&gt;<br>&nbsp; &nbsp; &lt;script type="text/javascript"&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; $(function(){<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //添加四个按钮<br>&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $('&lt;input type="button"
+value="click me"/&gt;&lt;input type="button" value="triggle click
+me"/&gt;&lt;input type="button" value="detach handler"/&gt;&lt;input
+type="button" value="show/hide text"/&gt;').appendTo($('body'));<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //找出所有按钮<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $('input[type="button"]')<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .eq(0)//找到第一个按钮<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .click(function(){<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; alert('you clicked me!');<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; })<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .end().eq(1)//返回所有按钮，再找到第二个<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .click(function(){<br>&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; $('input[type="button"]:eq(0)').trigger('click');<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; })<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .end().eq(2)//返回所有按钮，再找到第三个<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .click(function(){<br>&nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; $('input[type="button"]:eq(0)').unbind('click');<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; })<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .end().eq(3)//返回所有按钮，再找到第四个<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; .toggle(function(){<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $('.panel').hide('slow');<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; },function(){<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $('.panel').show('slow');<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });<br>&nbsp; &nbsp; &nbsp; &nbsp; });<br>&nbsp; &nbsp; &lt;/script&gt;<br>&nbsp; &nbsp; &lt;style type="text/css"&gt;<br>&nbsp; &nbsp; &nbsp; &nbsp; .panel<br>&nbsp; &nbsp; &nbsp; &nbsp; {<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; padding: 20px;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; background-color: #000066;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color: #FFFFFF;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; font-weight: bold;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; width: 200px;<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; height: 50px;<br>&nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp; &nbsp; &lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&nbsp; &nbsp; &lt;div class="panel"&gt;welcome to jQuery!&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</div><br><br><span style="position: absolute; display: none;" onmouseover="showMenu(this.id, 0, 1)" id="attach_7527"><img src="jquery4_files/attachimg.gif" border="0"></span><img src="jquery4_files/attachment.gif" onload="attachimg(this, 'load');" onmouseover="attachimginfo(this, 'attach_7527', 1);attachimg(this, 'mouseover')" onclick="zoom(this);" onmouseout="attachimginfo(this, 'attach_7527', 0, event)"><div id="attach_7527_menu" style="display: none;" class="t_attach"><img alt="" class="absmiddle" src="jquery4_files/image.gif" border="0"><a target="_blank" href="http://www.pin5i.com/attachment.aspx?attachmentid=7527"><strong>jquery6.gif                                                                                         </strong></a>(9.80 K)<br><div class="t_smallfont">2008-8-9 23:49:41</div></div><br><br><clk>现在，链式代码已经成为jQuery非常<nobr id="clickeyekey0" style="border-bottom: 1px dotted rgb(102, 0, 255); text-decoration: underline; color: rgb(102, 0, 255); background-color: transparent;" onclick="kwC(event,0)" oncontextmenu="return false" onmouseover="kwE(event,0, this)" onmouseout="kwL(event,this)" onmousemove="kwM(0)">流行</nobr>的一个特点了，在使用链条方式写代码时，可能会用到eq()/filter()……（reference:</clk><a href="http://docs.jquery.com/Traversing" target="_blank">http://docs.jquery.com/Traversing</a>）等方法变化jQuery对象的对应范围，然后，又可以用end()函数将范围复原到原来的状况。<br>需要注意的是，有几个函数并不返回jQuery对象，所以链条就不能继续下去，比如get()就不能像eq()那样用。<br><br>--未完待续--<br><br>（文/thinhunan&nbsp; 出处/博客园）<br><br><table style="border: 1px solid rgb(194, 214, 224); margin-bottom: 6px;" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td style="border: 3px solid rgb(239, 247, 254); padding: 5px;"><font color="red">友情提示：此文并不表示本站肯定持有相同观点，转载请注明出处。</font></td></tr></tbody></table><table style="border: 1px solid rgb(194, 214, 224); margin-bottom: 6px;" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td style="border: 3px solid rgb(239, 247, 254); padding: 5px;"><a href="http://www.pin5i.com/showforum-215.html" title="DZNT_ExpandPackage_V2.1.3155_Powered_by_pin5i.com">&nbsp;<font color="red">您可能对 [jQuery] 的这些文章也感兴趣：</font></a><p></p><table width="100%"><tbody><tr><td><a href="http://www.pin5i.com/showtopic-19732.html" target="_top">jQuery 简介及下载                                                </a></td><td><a href="http://www.pin5i.com/showtopic-19705.html" target="_top">&nbsp;用jQuery实现 Tooltip 和 Validate 表单验证                           </a></td></tr><tr><td><a href="http://www.pin5i.com/showtopic-17781.html" target="_top">用Javascript的JQuery插件实现的产品图片演示                               </a></td><td><a href="http://www.pin5i.com/showtopic-19726.html" target="_top">&nbsp;jQuery 入门使用教程之一：构造函数                                        </a></td></tr><tr><td><a href="http://www.pin5i.com/showtopic-19728.html" target="_top">jQuery 入门使用教程之三：事件                                          </a></td><td><a href="http://www.pin5i.com/showtopic-19727.html" target="_top">&nbsp;jQuery 入门使用教程之二：选择器                                         </a></td></tr><tr><td><a href="http://www.pin5i.com/showtopic-19730.html" target="_top">jQuery 入门使用教程之五：Ajax                                        </a></td><td><a href="http://www.pin5i.com/showtopic-18628.html" target="_top">&nbsp;jQuery的ImageCopper应用实例                                      </a></td></tr><tr><td><a href="http://www.pin5i.com/showtopic-19729.html" target="_top">jQuery 入门使用教程之四：链式代码                                        </a></td><td><a href="http://www.pin5i.com/showtopic-15731.html" target="_top">&nbsp;强烈推荐：240多个jQuery插件                                          </a></td></tr><tr><td><a href="http://www.pin5i.com/showtopic-19731.html" target="_top">jQuery 入门使用教程之六：动画                                          </a></td></tr></tbody></table></td></tr></tbody></table></div>
+					 </div>
+			</div>
+				</div>
+	</td>
+	</tr>
+	</tbody>
+	<tbody>
+	<tr>
+			<td class="postauthor threadfoot">
+					<img src="jquery4_files/gototop.gif" alt="gototop" onclick="window.scrollTo(0,0)" class="cursor">
+			</td>
+			<td class="threadfootright threadfoot">
+				<div id="ad_thread1_1" class="forumcontentad"></div>
+				<div class="forumanswer">
+				</div>
+			</td>
+	</tr>
+	</tbody>
+	</table>
+	</div>
+	<div class="forumdetailline">&nbsp;</div>
+	<!-- member menu -->
+			<div class="menuwindow" id="memberinfo_1_menu" style="display: none;">
+						<div class="popupmenu">
+							<div class="popupmenuitem" style="border-top: medium none;">
+								<p class="recivemessage"><a href="http://www.pin5i.com/usercppostpm.aspx?msgtoid=1" target="_blank">发送短消息</a></p>
+							</div>
+							<div class="popupmenuitem">
+								<p>
+								<a href="http://www.pin5i.com/userinfo-1.html" target="_blank">查看公共资料</a></p>
+								<p><a href="http://www.pin5i.com/search.aspx?posterid=1">查找该会员全部帖子</a></p>
+							</div>
+							<div class="popupmenuitem">
+								<ul>
+								<li>UID:<span>1</span></li>
+								<li>精华:<span>
+<a href="http://www.pin5i.com/search.aspx?posterid=1&amp;type=digest">11</a>
+</span></li>
+									<li>威望:<span>38 </span></li>
+									<li>金钱:<span>1151.85 拼元</span></li>
+								</ul>
+							</div>
+							<div class="popupmenuitem">
+								<p>状态:<span>
+									离线
+</span>
+								</p>
+								<ul class="tools">
+									<li>
+										<img src="jquery4_files/tools-qq.gif" alt="QQ: 28688028">
+										<a href="http://wpa.qq.com/msgrd?V=1&amp;Uin=28688028&amp;Site=%E6%8B%BC%E5%90%BE%E7%88%B1%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F&amp;Menu=yes" target="_blank">28688028</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+			</div>
+			<!-- member menu -->
+</div>
+</form>
+<div class="navnextpage">
+			&lt;&lt;<a href="http://www.pin5i.com/showtopic.aspx?forumid=215&amp;topicid=19729&amp;go=prev">上一主题</a>|<a href="http://www.pin5i.com/showtopic.aspx?forumid=215&amp;topicid=19729&amp;go=next">下一主题</a>&gt;&gt;
+</div>
+</div>
+<!--ntforumbox end-->
+<div class="forumpages">
+  <div class="forumpagesnumbers">
+		<table border="0" cellpadding="0" cellspacing="0">
+				   	<tbody><tr>
+						<td class="forumallpages"><strong>1</strong>&nbsp;&nbsp;/&nbsp;&nbsp;1&nbsp;&nbsp;页</td>
+						<td width="10">&nbsp;</td>
+						<td class="forumallpages"><span>1</span></td>
+						<td class="forumallpages3">跳转<input name="gopage" id="gopage" onkeydown="if(event.keyCode==13) { if(1) {window.location='showtopic-19729-' + (parseInt(this.value) > 0 ? parseInt(this.value) : 1) + '.html';}else{window.location='showtopic.aspx?topicid=19729&amp;page=' + (parseInt(this.value) > 0 ? parseInt(this.value) : 1) ;}}" size="4" maxlength="9" class="colorblue2" type="text">页</td></tr>
+		</tbody></table>
+  </div>
+</div>
+<!--forumjumping start-->
+<div id="forumjumping">
+			<div class="manageritem">
+		</div>
+			<div class="forumjump">
+					<select onchange="if(this.options[this.selectedIndex].value != '') {if(1) {
+					window.location='showforum-'+this.options[this.selectedIndex].value+'.html'; }else{window.location='showforum.aspx?forumid='+this.options[this.selectedIndex].value;}}">
+						  <option>论坛跳转...</option>
+						<option value="163">.Net编程</option><option value="178"> &nbsp;&nbsp;Asp.Net</option><option value="179"> &nbsp;&nbsp;C#</option><option value="180"> &nbsp;&nbsp;ADO.Net</option><option value="189"> &nbsp;&nbsp;Visual Studio.NET</option><option value="213"> &nbsp;&nbsp; &nbsp;&nbsp;F#</option><option value="216"> &nbsp;&nbsp; &nbsp;&nbsp;WCF</option><option value="217"> &nbsp;&nbsp; &nbsp;&nbsp;WPF</option><option value="203"> &nbsp;&nbsp;Silverlight</option><option value="204"> &nbsp;&nbsp;Linq</option><option value="200">其他编程</option><option value="7"> &nbsp;&nbsp;Java</option><option value="214"> &nbsp;&nbsp; &nbsp;&nbsp;Eclipse</option><option value="218"> &nbsp;&nbsp; &nbsp;&nbsp;Spring</option><option value="219"> &nbsp;&nbsp; &nbsp;&nbsp;EJB</option><option value="190"> &nbsp;&nbsp;Ajax</option><option value="220"> &nbsp;&nbsp; &nbsp;&nbsp;ExtJS</option><option value="186"> &nbsp;&nbsp;javascript</option><option value="215"> &nbsp;&nbsp; &nbsp;&nbsp;jQuery</option><option value="188"> &nbsp;&nbsp;RegExp</option><option value="185"> &nbsp;&nbsp;XML</option><option value="181"> &nbsp;&nbsp;Web Service</option><option value="82"> &nbsp;&nbsp;C &amp; C++</option><option value="168"> &nbsp;&nbsp;Ruby</option><option value="68"> &nbsp;&nbsp;Python</option><option value="69"> &nbsp;&nbsp;Flex</option><option value="176">数据库编程</option><option value="196"> &nbsp;&nbsp;SQL</option><option value="60"> &nbsp;&nbsp;SQL Server</option><option value="66"> &nbsp;&nbsp;Oracle</option><option value="209"> &nbsp;&nbsp;DB2</option><option value="210"> &nbsp;&nbsp;MySQL</option><option value="211"> &nbsp;&nbsp;Other DB</option><option value="198">编程应用</option><option value="202"> &nbsp;&nbsp;应用系统</option><option value="195"> &nbsp;&nbsp;建站技术</option><option value="187"> &nbsp;&nbsp;网站赢利</option><option value="199"> &nbsp;&nbsp;建站软件</option><option value="67">社区管理</option><option value="212"> &nbsp;&nbsp;网站事务</option>
+					</select>
+			</div>
+</div>
+<!--forumjumping end-->
+</div>
+<script type="text/javascript" src="jquery4_files/inforumad.js"></script>
+
+<div id="forumfooter">
+	<div class="footercopy">
+	 	<p>
+			版权所有 <a href="http://www.pin5i.com/" target="_blank">拼吾爱程序人生</a>&nbsp; <script src="jquery4_files/stat.html" language="JavaScript" charset="gb2312"></script><a href="http://www.cnzz.com/stat/website.php?web_id=844743" target="_blank" title="站长统计">站长统计</a><img src="jquery4_files/stat_002.html" border="0" height="0" width="0">
+		</p>
+		<span>Powered by <em>Discuz!NT</em>&nbsp;<em>2.1.202 
+				&nbsp;&nbsp;Copyright © 2001-2008 Comsenz Inc.</em>
+				鄂ICP备07500843号
+		 </span>
+	</div>
+	<div class="footergoto">
+		<span><img src="jquery4_files/gototop2.gif" alt="返顶部" onclick="window.scrollTo(0,0)"></span>
+	</div>
+</div>
+<div id="my_menu" class="ntdropmenu" style="display: none;">
+		<a href="http://www.pin5i.com/mytopics.aspx">我的主题</a>
+		<a href="http://www.pin5i.com/myposts.aspx">我的帖子</a>
+		<a href="http://www.pin5i.com/search.aspx?posterid=-1&amp;type=digest">我的精华</a>
+		<script type="text/javascript" src="jquery4_files/mymenu.js"></script><a href="http://www.pin5i.cn/" target="_blank">站长工具</a>
+</div>
+<script src="jquery4_files/clickeye.js"></script><script src="jquery4_files/eye.js" charset="utf-8"></script><script src="jquery4_files/core.html" charset="utf-8"></script><script src="jquery4_files/tag.js" charset="utf-8"></script>
+<div id="quicksearch_menu" class="searchmenu" style="display: none;">
+				<div onclick="document.getElementById('keywordtype').value='0';document.getElementById('quicksearch').innerHTML='帖子标题';document.getElementById('quicksearch_menu').style.display='none';" onmouseover="MouseCursor(this);">帖子标题</div>
+				<div onclick="document.getElementById('keywordtype').value='2';document.getElementById('quicksearch').innerHTML='空间日志';document.getElementById('quicksearch_menu').style.display='none';" onmouseover="MouseCursor(this);">空间日志</div>
+				<div onclick="document.getElementById('keywordtype').value='3';document.getElementById('quicksearch').innerHTML='相册标题';document.getElementById('quicksearch_menu').style.display='none';" onmouseover="MouseCursor(this);">相册标题</div>
+				<div onclick="document.getElementById('keywordtype').value='8';document.getElementById('quicksearch').innerHTML='作  者';document.getElementById('quicksearch_menu').style.display='none';" onmouseover="MouseCursor(this);">作&nbsp;&nbsp;者</div>
+</div>
+<div id="my_menu" class="ntdropmenu" style="display: none;">
+		<a href="http://www.pin5i.com/mytopics.aspx">我的主题</a>
+		<a href="http://www.pin5i.com/myposts.aspx">我的帖子</a>
+        <a href="http://www.pin5i.com/myattachment.aspx">我的附件</a>
+		<a href="http://www.pin5i.com/search.aspx?posterid=-1&amp;type=digest">我的精华</a>
+		<script type="text/javascript" src="jquery4_files/mymenu.js"></script><a href="http://www.pin5i.cn/" target="_blank">站长工具</a>
+</div>
+</div>
+</body></html>
