@@ -16,6 +16,7 @@
     <property name="reports.dir" value="${build.dir}/reports"/>
     <property name="test.reports.dir" value="${reports.dir}/junit"/>
 
+    <property name="package.dir" value="${basedir}/deploy"/>
     <property name="deploy.dir" value="${appserver.home}/webapps"/>
 
     <path id="lib.path">
@@ -73,6 +74,11 @@
         <war destfile="${build.dir}/gshoot.war">
             <fileset dir="${war.dir}"/>
         </war>
+        <copy todir="${package.dir}">
+            <fileset dir="${build.dir}">
+                <include name="gshoot.war"></include>
+            </fileset>
+        </copy>        
     </target>
     <target name="-deploy">
         <copy todir="${deploy.dir}">
