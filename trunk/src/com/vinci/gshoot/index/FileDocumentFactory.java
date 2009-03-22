@@ -7,6 +7,8 @@ public class FileDocumentFactory {
             return new WordDocument();
         } else if ("pdf".equals(extention)) {
             return new PdfDocument();
+        } else if ("xls".equals(extention)) {
+            return new ExcelDocument();
         }
         return null;
     }

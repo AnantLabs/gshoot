@@ -13,9 +13,8 @@ import java.util.Date;
 public abstract class AbstractFileDocument implements FileDocument {
 
     private DateTools.Resolution dateTimeResolution = DateTools.Resolution.SECOND;
-    private Logger logger = Logger.getLogger(AbstractFileDocument.class);
 
-    public Document toDocument(File file) {
+    public Document toDocument(File file) throws Exception {
         Document document = new Document();
 
         // Use an UnIndexed field, path is stored with the document, but is not searchable.
@@ -26,11 +25,7 @@ public abstract class AbstractFileDocument implements FileDocument {
         // to tokenize the field into words.
         addKeywordField(document, FIELD_MODIFIED, timeToString(file.lastModified()));
 
-        try {
-            addContentToDocument(document, file);
-        } catch (Exception e) {
-            logger.warn("Failed to index file " + file.getPath(), e);
-        }
+        addContentToDocument(document, file);
 
         return document;
     }

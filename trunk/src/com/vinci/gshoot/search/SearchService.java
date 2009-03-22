@@ -2,6 +2,7 @@ package com.vinci.gshoot.search;
 
 import com.vinci.gshoot.file.FileInfo;
 import com.vinci.gshoot.index.FileDocument;
+import com.vinci.gshoot.index.FileDocumentFactory;
 import com.vinci.gshoot.parser.WrongFileException;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.TokenStream;
@@ -35,7 +36,6 @@ public class SearchService {
         }
         IndexReader reader = null;
         try {
-
             QueryParser parser = new QueryParser(FileDocument.FIELD_CONTENT, getAnalyzer());
 
             Query query = parser.parse(keywords);
@@ -72,17 +72,18 @@ public class SearchService {
         int end = pager.getEndRecord();
         logger.debug("Get records[" + start + ", " + end + "]");
         SearchResults results = new SearchResults(pager);
-        if (hits.length > 0 ) {
+        if (hits.length > 0) {
             for (int i = start - 1; i < end; i++) {
                 Document doc = searcher.doc(hits[i].doc);
-                String path = doc.get("path");
+                String path = doc.get(FileDocument.FIELD_PATH);
                 FileInfo info = FileInfo.getFileInfo(path);
                 try {
                     info.setScore(hits[i].score);
-                    info.setDigest(getDigest(query, doc));
+                    String summary = doc.get(FileDocument.FIELD_SUMMARY);
+                    info.setDigest(summary == null ? getDigest(query, doc) : summary);
                 }
                 catch (Exception e) {
-                    info.setDigest("无法得到该文件的摘要内容。");
+                    info.setDigest("无法得到该文件的摘要内容: " + e.getMessage());
                     logger.warn("Failed to get digest for file " + path, e);
                 }
                 results.add(info);
@@ -91,7 +92,7 @@ public class SearchService {
         return results;
     }
 
-    private String getDigest(Query query, Document doc) throws IOException, WrongFileException {
+    private String getDigest(Query query, Document doc) throws Exception {
         String path = doc.get(FileDocument.FIELD_PATH);
 
         SimpleHTMLFormatter formatter = new SimpleHTMLFormatter(prefixHTML, suffixHTML);
@@ -101,7 +102,7 @@ public class SearchService {
         Fragmenter fragmenter = new SimpleFragmenter(200);
         highlighter.setTextFragmenter(fragmenter);
 
-        String content = FileInfo.getFileInfo(path).getType().getParser().parse(path);
+        String content = FileDocumentFactory.getFileDocument(path).getContent(new File(path));
         TokenStream tokenStream = getAnalyzer().tokenStream(FileDocument.FIELD_CONTENT,
                 new StringReader(content));
 

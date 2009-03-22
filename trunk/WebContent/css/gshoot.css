@@ -92,7 +92,7 @@ h3, .med {
     padding: 0;
 }
 
-a:link, .w, #prs a:visited, #prs a:active, .q:active, .q:visited {
+a, .w, .q:active, .q:visited {
     color: #0000CC;
 }
 

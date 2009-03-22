@@ -30,4 +30,20 @@ public class FileInfoTest {
         assertEquals("/file1.txt", info.getPath());
         assertEquals(FileType.FILE_TXT, info.getType());
     }
+
+    @Test
+    public void should_return_file_info_for_file_with_no_extension() {
+        FileInfo info = FileInfo.getFileInfo("/file1");
+        assertEquals("file1", info.getName());
+        assertEquals("/file1", info.getPath());
+        assertEquals(FileType.FILE_UNKNOWN, info.getType());
+    }
+
+    @Test
+    public void should_return_file_info_for_file_with_dot_ended() {
+        FileInfo info = FileInfo.getFileInfo("/file1.");
+        assertEquals("file1", info.getName());
+        assertEquals("/file1.", info.getPath());
+        assertEquals(FileType.FILE_UNKNOWN, info.getType());
+    }
 }

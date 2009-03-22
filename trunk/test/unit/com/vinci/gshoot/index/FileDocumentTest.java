@@ -13,7 +13,7 @@ import static junit.framework.Assert.assertNotNull;
 
 public class FileDocumentTest {
     @Test
-    public void should_load_file_as_document() throws FileNotFoundException {
+    public void should_load_file_as_document() throws Exception {
         File f = new File("fixtures/word/laborlaw.doc");
         Document doc = new WordDocument().toDocument(f);
         assertEquals(f.getPath(), doc.getField("path").stringValue());

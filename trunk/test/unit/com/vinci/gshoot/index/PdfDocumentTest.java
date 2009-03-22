@@ -8,7 +8,7 @@ import java.io.File;
 
 public class PdfDocumentTest {
     @Test
-    public void should_convert_to_lucene_document_for_pdf_files() {
+    public void should_convert_to_lucene_document_for_pdf_files() throws Exception {
         String file = "fixtures/pdf/Telecom.pdf";
         Document document = new PdfDocument().toDocument(new File(file));
         assertEquals(file, document.get("path"));

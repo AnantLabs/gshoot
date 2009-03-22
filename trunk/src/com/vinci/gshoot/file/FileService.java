@@ -39,11 +39,16 @@ public class FileService {
                 listFilesRecursively(f, fileList);
             }
         } else {
+
             String path = file.getPath();
-            if (path.endsWith(".doc") || path.endsWith(".docx") || path.endsWith(".pdf")) {
-                fileList.put(file.getPath(), FileInfo.getFileInfo(file));
+            if (isValidFile(path)) {
+                fileList.put(path, FileInfo.getFileInfo(file));
             }
         }
+    }
+
+    private boolean isValidFile(String path) {
+        return path.endsWith(".xls") || path.endsWith(".doc") || path.endsWith(".docx") || path.endsWith("pdf");
     }
 
 }
