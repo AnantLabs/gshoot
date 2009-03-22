@@ -18,7 +18,7 @@
                                 <tbody>
                                     <tr>
                                         <td nowrap="nowrap">
-                                            <input type="text" value="" title="企业搜索" size="41" name="q" id="q"
+                                            <input type="text" value="$!q" title="企业搜索" size="41" name="q" id="q"
                                                    maxlength="2048"/>
                                             <input type="submit" value="搜索"/>
                                         </td>
@@ -57,6 +57,7 @@
                 </div>
                 <div>
                     <cite>相关度 - $!f.score - </cite><br>
+                    <cite>文件类型 - $!f.type.name - </cite><br>
                     <cite>文件大小 - $!f.formatedFileSize - </cite><br>
                     <cite>更新时间 - $!f.formatedLastModified - </cite>
                 </div>

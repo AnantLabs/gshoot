@@ -17,10 +17,11 @@ public class FileInfo {
     private String name;
     private String extension;
     private FileType fileType;
-    private static final DateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy年MM月dd日");
     private String digest;
     private float score;
+    private static final DateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy年MM月dd日");
     private static final NumberFormat PERCENTAGE_FORMAT = NumberFormat.getPercentInstance();
+    private static final NumberFormat FILE_SIZE_FORMAT = new DecimalFormat("####.0");
 
     private FileInfo(String path, String name, String extension, long fileSize, long lastModified, FileType type) {
         this.path = path;
@@ -75,9 +76,9 @@ public class FileInfo {
         if (fileSize < 1024) {
             return fileSize + " bytes";
         } else if (fileSize < 1024 * 1024) {
-            return fileSize / 1024 + " k";
+            return FILE_SIZE_FORMAT.format(fileSize / 1024.0) + " k";
         } else {
-            return fileSize / (1024 * 1024) + " M";
+            return FILE_SIZE_FORMAT.format(fileSize / (1024.0 * 1024.0)) + " M";
         }
     }
 
@@ -101,7 +102,10 @@ public class FileInfo {
     private static String getFileName(String path) {
         String fileName = path.substring(path.lastIndexOf("/") + 1);
         int dotIndex = fileName.lastIndexOf(".");
-        return fileName.substring(0, dotIndex);
+        if (dotIndex > 0) {
+            fileName = fileName.substring(0, dotIndex);
+        }
+        return fileName;
     }
 
 
@@ -119,5 +123,26 @@ public class FileInfo {
 
     public String getScore() {
         return PERCENTAGE_FORMAT.format(this.score);
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FileInfo fileInfo = (FileInfo) o;
+
+        if (fileSize != fileInfo.fileSize) return false;
+        if (lastModified != fileInfo.lastModified) return false;
+        if (!path.equals(fileInfo.path)) return false;
+
+        return true;
+    }
+
+    public int hashCode() {
+        int result;
+        result = path.hashCode();
+        result = 31 * result + (int) (fileSize ^ (fileSize >>> 32));
+        result = 31 * result + (int) (lastModified ^ (lastModified >>> 32));
+        return result;
     }
 }

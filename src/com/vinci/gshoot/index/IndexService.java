@@ -1,5 +1,6 @@
 package com.vinci.gshoot.index;
 
+import com.vinci.gshoot.utils.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.IndexWriter;
@@ -9,8 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import com.vinci.gshoot.utils.FileUtils;
-
 public class IndexService {
     private String indexDir;
     private Logger logger = Logger.getLogger(IndexService.class);
@@ -19,10 +18,7 @@ public class IndexService {
         this.indexDir = indexDir;
         File dir = new File(indexDir);
         if (!dir.exists()) {
-            throw new IllegalArgumentException("Directory " + indexDir + " does not exists.");
-        }
-        if (!dir.isDirectory()) {
-            throw new IllegalArgumentException(indexDir + " is not directory.");
+            dir.mkdir();
         }
         FileUtils.deleteFilesIn(dir);
     }
@@ -62,7 +58,7 @@ public class IndexService {
                 return;
             }
 
-            index(files, failedFiles, writer);
+            failedFiles = index(files, writer);
             logger.info("Optimizing...");
             try {
                 writer.optimize();
@@ -73,23 +69,30 @@ public class IndexService {
             forceClose(writer);
         }
 
-        logger.warn("Indexing failed files: ");
+        StringBuilder sb = new StringBuilder("Indexing failed files: \n");
         for (String file : failedFiles.keySet()) {
-            logger.warn("\t--" + file + ": " + failedFiles.get(file));
+            sb.append("\t--").append(file).append(": ").append(failedFiles.get(file)).append("\n");
         }
+        logger.warn(sb.toString());
     }
 
-    private void index(Collection<String> files, Map<String, String> failedFiles, IndexWriter writer) {
+    private Map<String, String> index(Collection<String> files, IndexWriter writer) {
+        Map<String, String> failedFiles = new LinkedHashMap<String, String>();
         for (String file : files) {
             logger.debug("Index file: " + file);
             try {
                 FileDocument document = FileDocumentFactory.getFileDocument(file);
-                writer.addDocument(document.toDocument(new File(file)));
+                if (document != null) {
+                    writer.addDocument(document.toDocument(new File(file)));
+                } else {
+                    logger.info("Skip file " + file);
+                }
             }
             catch (Exception e) {
                 failedFiles.put(file, e.getMessage());
             }
         }
+        return failedFiles;
     }
 
     private void deleteFilesFromIndex(List<String> files) {
@@ -100,7 +103,7 @@ public class IndexService {
             for (String file : files) {
                 terms.add(new Term(FileDocument.FIELD_PATH, file));
             }
-            writer.deleteDocuments(terms.toArray(new Term[0]));
+            writer.deleteDocuments(terms.toArray(new Term[terms.size()]));
         }
         catch (IOException e) {
             logger.warn("Failed to delete index for updated files: " + e.getMessage(), e);
