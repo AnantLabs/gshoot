@@ -1,4 +1,4 @@
-package com.vinci.gshoot.index;
+package com.vinci.gshoot.document;
 
 import org.apache.lucene.document.Document;
 
@@ -9,6 +9,8 @@ public interface FileDocument {
     String FIELD_CONTENT = "contents";
     String FIELD_MODIFIED = "modified";
     String FIELD_SUMMARY = "summary";
+    String FIELD_UID = "uid";
+    String FIELD_TITLE = "title";
 
     Document toDocument(File file) throws Exception;
 

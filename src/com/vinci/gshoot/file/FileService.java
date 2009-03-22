@@ -48,7 +48,13 @@ public class FileService {
     }
 
     private boolean isValidFile(String path) {
-        return path.endsWith(".xls") || path.endsWith(".doc") || path.endsWith(".docx") || path.endsWith("pdf");
+        if (path.endsWith(".xls")) return true;
+        if (path.endsWith(".doc")) return true;
+        if (path.endsWith(".docs")) return true;
+        if (path.endsWith(".pdf")) return true;
+        if (path.endsWith(".ppt")) return true;
+//        if (path.endsWith(".htm")) return true;
+//        if (path.endsWith(".html")) return true;
+        return false;
     }
-
 }

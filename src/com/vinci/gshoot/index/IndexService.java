@@ -1,5 +1,7 @@
 package com.vinci.gshoot.index;
 
+import com.vinci.gshoot.document.DocumentFactory;
+import com.vinci.gshoot.document.FileDocument;
 import com.vinci.gshoot.utils.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -81,7 +83,7 @@ public class IndexService {
         for (String file : files) {
             logger.debug("Index file: " + file);
             try {
-                FileDocument document = FileDocumentFactory.getFileDocument(file);
+                FileDocument document = DocumentFactory.getFileDocument(file);
                 if (document != null) {
                     writer.addDocument(document.toDocument(new File(file)));
                 } else {
