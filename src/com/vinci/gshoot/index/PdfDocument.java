@@ -68,7 +68,7 @@ public class PdfDocument extends AbstractFileDocument {
     }
 
     private void addSummaryField(Document document, String contents) {
-        int summarySize = Math.min(contents.length(), 500);
+        int summarySize = Math.min(contents.length(), 200);
         String summary = contents.substring(0, summarySize);
         // Add summary as UnIndexed field, it is stored and returned with hit documents for display.
         addUnindexedField(document, "summary", summary);
