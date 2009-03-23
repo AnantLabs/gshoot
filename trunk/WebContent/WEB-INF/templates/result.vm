@@ -34,14 +34,15 @@
 </div>
 
 <div id="results">
+    #set($p=$rs.pager)
     <div id="srh">
         <div id="srht"><strong>搜索结果</strong></div>
-        <p>约有 <strong>$!rs.pager.numTotalHits</strong> 项符合 <strong>$!q</strong>
-            的查询结果，以下是第<strong>$!rs.pager.startRecord</strong>-<strong>$!rs.pager.endRecord</strong> 项 （搜索用时
+        <p>约有 <strong>$p.numTotalHits</strong> 项符合 <strong>$!q</strong>
+            的查询结果，以下是第<strong>$p.startRecord</strong>-<strong>$p.endRecord</strong> 项 （搜索用时
             <strong>$!t</strong> 秒）</p>
     </div>
     <div id="srs">
-        #if($!rs.pager.numTotalHits > 0)
+        #if($p.numTotalHits > 0)
         <ol id="rso">
             #foreach ($f in $rs.results)
             <li class="g w0">
@@ -67,10 +68,35 @@
         </ol>
 
         #else
-        <p>对不起，没有找到符合条件的记录，请重新搜索。</p>
+        <div class="med" style="margin-top: 2em;">
+            <p>对不起，无法找到和"<b>$!q</b>"相关的文件。</p>
+
+            <p>建议：</p>
+            <ul>
+                <li>请检查输入单词有无错误</li>
+                <li>请换用别的关键词查询</li>
+            </ul>
+        </div>
         #end
 
         <div id="resultPages">
+            #if($p.pagesCount > 1)
+            #if($p.pageIndex > $p.startPage)
+            #set($pp = $p.pageIndex - 1)
+            <span class=""><a href="search.do?q=$!q&pi=$!pp" class="">上一页</a></span>
+            #end
+            #foreach($page in [1..$rs.pager.pagesCount])
+            #if($page == $rs.pager.pageIndex)
+            <span class="page cur">$page&nbsp;</span>
+            #else
+            <span class="page"><a href="search.do?q=$!q&pi=$page">$page&nbsp;</a></span>
+            #end
+            #end
+            #if($p.pageIndex < $p.endPage)
+            #set($np = $p.pageIndex + 1)
+            <span class=""><a href="search.do?q=$!q&pi=$np" class="">下一页</a></span>
+            #end
+            #end
         </div>
     </div>
 </div>

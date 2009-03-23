@@ -1,6 +1,5 @@
 package com.vinci.gshoot.search;
 
-import com.vinci.gshoot.file.FileService;
 import com.vinci.gshoot.index.IndexService;
 import com.vinci.gshoot.utils.FileUtils;
 import org.apache.lucene.queryParser.ParseException;
@@ -15,7 +14,6 @@ import java.io.IOException;
 public class SearchServiceTest {
     private String indexDir = "./indices";
     private String fileDir = "fixtures/fileDir";
-    private FileService fileService = new FileService(fileDir);
     private IndexService indexService;
 
     @Before
@@ -25,8 +23,8 @@ public class SearchServiceTest {
         FileUtils.createFile(fileDir, "file0.txt", "This is an existing file\nThis is the second line.");
         createFiles(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 
-        indexService = new IndexService(indexDir);
-        indexService.indexAll(fileService.getAllFileNames());
+        indexService = new IndexService(indexDir, fileDir);
+        indexService.indexAll();
     }
 
     private void createFiles(int... index) throws IOException {

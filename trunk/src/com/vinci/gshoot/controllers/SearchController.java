@@ -50,7 +50,7 @@ public class SearchController {
     private int parsePageIndex(HttpServletRequest httpServletRequest) {
         int index = 1;
         try {
-            index = Integer.valueOf(httpServletRequest.getParameter("pageIndex"));
+            index = Integer.valueOf(httpServletRequest.getParameter("pi"));
             if (index < 1) {
                 index = 1;
             }
