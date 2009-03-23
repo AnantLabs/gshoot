@@ -35,7 +35,8 @@ body {
     margin-top: 0;
     padding: 0.1em;
 }
-#srs{
+
+#srs {
     margin-left: 5px
 }
 
@@ -114,4 +115,24 @@ em {
 .a, cite, .cite, .cite:link {
     color: green;
     font-style: normal;
+}
+
+h3, .med {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+#resultPages {
+    text-align: center;
+}
+
+.cur {
+    color: #A90A08;
+    font-weight: bold;
+}
+
+.page {
+    padding: 0;
+    text-align: center;
 }

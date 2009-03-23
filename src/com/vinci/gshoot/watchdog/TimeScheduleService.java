@@ -1,6 +1,7 @@
 package com.vinci.gshoot.watchdog;
 
 import com.vinci.gshoot.IService;
+import com.vinci.gshoot.index.IndexService;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -10,24 +11,18 @@ public class TimeScheduleService implements Runnable, IService {
 
     private long watchInterval = -1;
     private boolean stopped = false;
-    private List<Observer> observers = new LinkedList<Observer>();
+    private IndexService indexService;
 
-    public TimeScheduleService(long watchInterval, Observer... observers) {
-        if (watchInterval < 1) {
-            throw new InvalidConfigurationException("Timeout should be bigger than 1 second");
+    public TimeScheduleService(long watchInterval, IndexService indexService) {
+        if (watchInterval < 30) {
+            throw new InvalidConfigurationException("Timeout should be bigger than 30 second");
         }
         this.watchInterval = watchInterval * 1000;
-        this.observers.addAll(Arrays.asList(observers));
+        this.indexService = indexService;
     }
 
     protected final void fireTimeoutOccured() {
-        for (Observer observer : observers) {
-            observer.fired();
-        }
-    }
-
-    public void add(Observer observer) {
-        this.observers.add(observer);
+        indexService.indexAll();
     }
 
     public synchronized void start() {

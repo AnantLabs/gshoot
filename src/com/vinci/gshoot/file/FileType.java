@@ -1,26 +1,24 @@
 package com.vinci.gshoot.file;
 
-import com.vinci.gshoot.parser.Parser;
-import com.vinci.gshoot.parser.PDFParser;
-import com.vinci.gshoot.parser.WordParser;
+import com.vinci.gshoot.document.FileDocument;
 
-import java.util.List;
 import java.util.Arrays;
+import java.util.List;
 
 public class FileType {
     private int type;
     private String name;
     private List<String> extension;
-    private Parser parser;
+    private FileDocument parser;
 
     public static final FileType FILE_EXCEL = new FileType(1, "EXCEL", null, "xls");
-    public static final FileType FILE_WORD = new FileType(1, "WORD", new WordParser(), "doc");
+    public static final FileType FILE_WORD = new FileType(1, "WORD", null, "doc");
     public static final FileType FILE_PPT = new FileType(1, "PPT", null, "ppt");
-    public static final FileType FILE_PDF = new FileType(1, "PDF", new PDFParser(), "pdf");
+    public static final FileType FILE_PDF = new FileType(1, "PDF", null, "pdf");
     public static final FileType FILE_TXT = new FileType(1, "TXT", null, "txt");
     public static final FileType FILE_UNKNOWN = new FileType(-1, "unknow", null);
 
-    private FileType(int type, String name, Parser parser, String... extension) {
+    private FileType(int type, String name, FileDocument parser, String... extension) {
         this.type = type;
         this.name = name;
         this.parser = parser;
@@ -37,10 +35,6 @@ public class FileType {
 
     public List<String> getExtension() {
         return extension;
-    }
-
-    public Parser getParser() {
-        return parser;
     }
 
     public static boolean isValidFileType(String path) {
