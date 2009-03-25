@@ -1,7 +1,5 @@
 package com.vinci.gshoot.file;
 
-import com.vinci.gshoot.document.FileDocument;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,19 +7,17 @@ public class FileType {
     private int type;
     private String name;
     private List<String> extension;
-    private FileDocument parser;
 
-    public static final FileType FILE_EXCEL = new FileType(1, "EXCEL", null, "xls");
-    public static final FileType FILE_WORD = new FileType(1, "WORD", null, "doc");
-    public static final FileType FILE_PPT = new FileType(1, "PPT", null, "ppt");
-    public static final FileType FILE_PDF = new FileType(1, "PDF", null, "pdf");
-    public static final FileType FILE_TXT = new FileType(1, "TXT", null, "txt");
-    public static final FileType FILE_UNKNOWN = new FileType(-1, "unknow", null);
+    public static final FileType FILE_EXCEL = new FileType(1, "EXCEL", "xls");
+    public static final FileType FILE_WORD = new FileType(1, "WORD", "doc");
+    public static final FileType FILE_PPT = new FileType(1, "PPT", "ppt");
+    public static final FileType FILE_PDF = new FileType(1, "PDF", "pdf");
+    public static final FileType FILE_TXT = new FileType(1, "TXT", "txt");
+    public static final FileType FILE_UNKNOWN = new FileType(-1, "unknow");
 
-    private FileType(int type, String name, FileDocument parser, String... extension) {
+    private FileType(int type, String name, String... extension) {
         this.type = type;
         this.name = name;
-        this.parser = parser;
         this.extension = Arrays.asList(extension);
     }
 
