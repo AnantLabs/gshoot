@@ -1,19 +1,24 @@
 package com.vinci.gshoot.index;
 
-import com.vinci.gshoot.document.DocumentFactory;
 import com.vinci.gshoot.document.FileDocument;
-import com.vinci.gshoot.utils.FileUtils;
+import com.vinci.gshoot.parser.Parser;
+import com.vinci.gshoot.parser.ParserFactory;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.document.DateTools;
+import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
-import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.TermEnum;
-import org.apache.lucene.document.DateTools;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class IndexService {
     private String indexDir;
@@ -101,12 +106,12 @@ public class IndexService {
             for (String filePath : newFilePaths) {
                 logger.debug("Index file: " + filePath);
                 try {
-                    FileDocument document = DocumentFactory.getFileDocument(filePath);
-                    if (document != null) {
+                    Parser parser = ParserFactory.getParser(filePath);
+                    if (parser != null) {
+                        FileDocument document = new FileDocument(parser);
                         writer.addDocument(document.toDocument(new File(filePath)));
-                    } else {
-                        logger.info("Skip file: " + filePath);
                     }
+                    logger.info("Skip file: " + filePath);
                 }
                 catch (Exception e) {
                     failedFiles.put(filePath, e.getMessage() == null ? "Unknow reason" : e.getMessage());
