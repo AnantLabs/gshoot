@@ -1,4 +1,4 @@
-package com.vinci.gshoot.parser.ppt;
+package com.vinci.gshoot.fileparser.ppt;
 
 import org.apache.poi.hslf.EncryptedSlideShow;
 import org.apache.poi.hslf.HSLFSlideShow;
