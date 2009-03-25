@@ -1,6 +1,6 @@
 package com.vinci.gshoot.document;
 
-import com.vinci.gshoot.parser.Parser;
+import com.vinci.gshoot.fileparser.Parser;
 import org.apache.lucene.document.DateTools;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
