@@ -1,16 +1,24 @@
 package com.vinci.gshoot.search;
 
-import com.vinci.gshoot.document.DocumentFactory;
 import com.vinci.gshoot.document.FileDocument;
 import com.vinci.gshoot.file.FileInfo;
+import com.vinci.gshoot.parser.ParserFactory;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryParser.QueryParser;
-import org.apache.lucene.search.*;
-import org.apache.lucene.search.highlight.*;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.Searcher;
+import org.apache.lucene.search.TopDocCollector;
+import org.apache.lucene.search.highlight.Fragmenter;
+import org.apache.lucene.search.highlight.Highlighter;
+import org.apache.lucene.search.highlight.QueryScorer;
+import org.apache.lucene.search.highlight.SimpleFragmenter;
+import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,8 +64,7 @@ public class SearchService {
     }
 
     private SearchResults doPagingSearch(Query query, int pageIndex, IndexReader indexReader) throws IOException {
-        int fetchPages = pageIndex;
-        TopDocCollector collector = new TopDocCollector(fetchPages * hitsPerPage);
+        TopDocCollector collector = new TopDocCollector(pageIndex * hitsPerPage);
         IndexSearcher searcher = new IndexSearcher(indexReader);
         searcher.search(query, collector);
         ScoreDoc[] hits = collector.topDocs().scoreDocs;
@@ -80,8 +87,7 @@ public class SearchService {
                 FileInfo info = FileInfo.getFileInfo(path);
                 try {
                     info.setScore(hits[i].score);
-                    String summary = doc.get(FileDocument.FIELD_SUMMARY);
-                    info.setDigest(summary == null ? getDigest(query, doc) : summary);
+                    info.setDigest(getDigest(query, doc));
                 }
                 catch (Exception e) {
                     info.setDigest("无法得到该文件的摘要内容: " + e.getMessage());
@@ -103,9 +109,8 @@ public class SearchService {
         Fragmenter fragmenter = new SimpleFragmenter(200);
         highlighter.setTextFragmenter(fragmenter);
 
-        String content = DocumentFactory.getFileDocument(path).getContent(new File(path));
-        TokenStream tokenStream = getAnalyzer().tokenStream(FileDocument.FIELD_CONTENT,
-                new StringReader(content));
+        String content = ParserFactory.getParser(path).parse(new File(path)).getTextContent();
+        TokenStream tokenStream = getAnalyzer().tokenStream(FileDocument.FIELD_CONTENT, new StringReader(content));
 
         return highlighter.getBestFragment(tokenStream, content) + " ...";
     }
