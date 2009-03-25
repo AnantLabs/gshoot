@@ -2,7 +2,7 @@ package com.vinci.gshoot.search;
 
 import com.vinci.gshoot.document.FileDocument;
 import com.vinci.gshoot.file.FileInfo;
-import com.vinci.gshoot.parser.ParserFactory;
+import com.vinci.gshoot.fileparser.ParserFactory;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;

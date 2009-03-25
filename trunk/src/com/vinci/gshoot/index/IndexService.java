@@ -1,8 +1,8 @@
 package com.vinci.gshoot.index;
 
 import com.vinci.gshoot.document.FileDocument;
-import com.vinci.gshoot.parser.Parser;
-import com.vinci.gshoot.parser.ParserFactory;
+import com.vinci.gshoot.fileparser.Parser;
+import com.vinci.gshoot.fileparser.ParserFactory;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.DateTools;
