@@ -1,4 +1,4 @@
-package com.vinci.gshoot.document.ppt;
+package com.vinci.gshoot.parser.ppt;
 
 import org.apache.poi.hslf.EncryptedSlideShow;
 import org.apache.poi.hslf.HSLFSlideShow;
@@ -20,6 +20,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -47,6 +48,10 @@ public class TextHSLFSlideShow extends HSLFSlideShow {
 
     public TextHSLFSlideShow(String fileName) throws IOException {
         this(new FileInputStream(fileName));
+    }
+
+    public TextHSLFSlideShow(File file) throws IOException {
+        this(new FileInputStream(file));
     }
 
     public TextHSLFSlideShow(InputStream inputStream) throws IOException {
