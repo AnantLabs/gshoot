@@ -83,9 +83,9 @@ public class IndexServiceTest {
 //            Searcher searcher = new IndexSearcher(reader);
 //            Analyzer analyzer = new StandardAnalyzer();
 //
-//            QueryParser parser = new QueryParser(FileDocument.FIELD_CONTENT, analyzer);
+//            QueryParser fileparser = new QueryParser(FileDocument.FIELD_CONTENT, analyzer);
 //
-//            Query query = parser.parse(queryString);
+//            Query query = fileparser.parse(queryString);
 //
 //            TopDocs topDocs = searcher.search(query, null, 100);
 //            for (ScoreDoc scoreDoc : topDocs.scoreDocs) {
