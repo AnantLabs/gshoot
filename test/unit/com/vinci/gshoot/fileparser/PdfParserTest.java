@@ -10,7 +10,7 @@ public class PdfParserTest {
     @Test
     public void should_convert_to_lucene_document_for_pdf_files() throws Exception {
         String file = "fixtures/pdf/Telecom.pdf";
-        String content = new PdfParser().parse(new File(file)).getTextContent();
+        String content = new PdfParser().parse(new File(file)).getContentAsText();
         assertTrue(content.contains("电信"));
     }
 }
