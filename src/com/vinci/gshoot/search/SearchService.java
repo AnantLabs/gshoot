@@ -109,7 +109,7 @@ public class SearchService {
         Fragmenter fragmenter = new SimpleFragmenter(200);
         highlighter.setTextFragmenter(fragmenter);
 
-        String content = ParserFactory.getParser(path).parse(new File(path)).getTextContent();
+        String content = ParserFactory.getParser(path).parse(new File(path)).getContentAsText();
         TokenStream tokenStream = getAnalyzer().tokenStream(FileDocument.FIELD_CONTENT, new StringReader(content));
 
         return highlighter.getBestFragment(tokenStream, content) + " ...";
