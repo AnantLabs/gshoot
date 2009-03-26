@@ -45,7 +45,7 @@ public class FileDocument {
         addUnstoredKeywordField(document, FIELD_UID, uid(file));
 
         // Add contents as Reader-valued Text field, so as to get tokenized and indexed.
-        addTextField(document, FIELD_CONTENT, parser.getContent());
+        addTextField(document, FIELD_CONTENT, parser.getContentAsReader());
 
         // Add summary as UnIndexed field, it is stored and returned with hit documents for display.
         addUnindexedField(document, FIELD_SUMMARY, parser.getSummary());

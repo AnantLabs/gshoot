@@ -1,6 +1,6 @@
 package com.vinci.gshoot.watchdog;
 
-public class InvalidConfigurationException extends RuntimeException{
+public class InvalidConfigurationException extends RuntimeException {
     public InvalidConfigurationException() {
     }
 
