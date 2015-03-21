@@ -1,0 +1,1 @@
+This search engine is based on lucene and can parse pdf/word/excel/ppt files.
